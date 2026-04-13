@@ -1,0 +1,37 @@
+export const ROLES = {
+  PATIENT:      'PATIENT',
+  PROVIDER:     'PROVIDER',
+  ADMIN:        'ADMIN',
+  RECEPTIONIST: 'RECEPTIONIST',
+};
+
+export const APPOINTMENT_STATUS = {
+  SCHEDULED: 'SCHEDULED',
+  CONFIRMED: 'CONFIRMED',
+  CANCELLED: 'CANCELLED',
+  NO_SHOW:   'NO_SHOW',
+  COMPLETED: 'COMPLETED',
+};
+
+export const APPOINTMENT_PRIORITY = {
+  EMERGENCY: 'EMERGENCY',
+  URGENT:    'URGENT',
+  REGULAR:   'REGULAR',
+};
+
+export const QUEUE_STATUS = {
+  OPEN:   'OPEN',
+  PAUSED: 'PAUSED',
+  CLOSED: 'CLOSED',
+};
+
+export const QUEUE_ENTRY_STATUS = {
+  WAITING:   'WAITING',
+  CALLED:    'CALLED',
+  SERVING:   'SERVING',
+  COMPLETED: 'COMPLETED',
+  MISSED:    'MISSED',
+};
+
+export const POLL_INTERVAL_MS =
+  Number(import.meta.env.VITE_POLL_INTERVAL_MS) || 30000;
