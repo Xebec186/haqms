@@ -150,9 +150,7 @@ export default function UserManagement() {
                               ? "bg-purple-100 text-purple-700"
                               : u.roleName === "PROVIDER"
                                 ? "bg-blue-100 text-blue-700"
-                                : u.roleName === "RECEPTIONIST"
-                                  ? "bg-indigo-100 text-indigo-700"
-                                  : "bg-teal-100 text-teal-700"
+                                : "bg-teal-100 text-teal-700"
                           }`}
                         >
                           {u.username?.charAt(0).toUpperCase()}

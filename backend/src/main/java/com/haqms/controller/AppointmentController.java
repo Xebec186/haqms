@@ -114,7 +114,7 @@ public class AppointmentController {
     /**
      * PATCH /api/v1/appointments/{id}/priority
      * Escalates or downgrade appointment priority (EMERGENCY / URGENT / REGULAR).
-     * Restricted to ADMIN and RECEPTIONIST — patients cannot self-escalate.
+     * Restricted to ADMIN — patients cannot self-escalate.
      */
     @PatchMapping("/{id}/priority")
     @PreAuthorize("hasAnyRole('ADMIN', 'PROVIDER')")

@@ -21,7 +21,7 @@ export default function CreateUser() {
     watch,
     setError,
     formState: { errors, isSubmitting },
-  } = useForm({ defaultValues: { roleName: "RECEPTIONIST" } });
+  } = useForm({ defaultValues: { roleName: "ADMIN" } });
 
   const watchRole = watch("roleName");
 
@@ -68,8 +68,6 @@ export default function CreateUser() {
   };
 
   const roleDescriptions = {
-    RECEPTIONIST:
-      "Can register patients, book appointments, and manage check-ins",
     PROVIDER:
       "Links to an existing clinical provider record. Can view schedule and manage queue",
     ADMIN: "Full system access including user management and analytics",
@@ -122,11 +120,10 @@ export default function CreateUser() {
                          focus:border-transparent hover:border-slate-400 transition-all"
               {...register("roleName", { required: "Role is required" })}
             >
-              <option value="RECEPTIONIST">Receptionist</option>
+              <option value="ADMIN">Admin</option>
               <option value="PROVIDER">
                 Provider (links to clinical record)
               </option>
-              <option value="ADMIN">Admin</option>
             </select>
             {watchRole && (
               <p className="text-xs text-slate-500 flex items-center gap-1 mt-0.5">

@@ -12,6 +12,8 @@ public interface HealthcareProviderService {
 
     ProviderResponse findById(Long providerId);
 
+    ProviderResponse findByUserId(Long userId);
+
     ProviderResponse create(CreateProviderRequest request);
 
     ProviderResponse update(Long providerId, UpdateProviderRequest request);

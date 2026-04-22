@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { usePolling } from "../../hooks/usePolling";
@@ -28,34 +28,36 @@ export default function QueueManagement() {
   const [fetchError, setFetchError] = useState(false);
   const [calling, setCalling] = useState(false);
 
-  const refresh = useCallback(async () => {
+  const refresh = useCallback(async (isInitial = false) => {
+    if (isInitial) setLoading(true);
     try {
-      setLoading(true);
       const qRes = await queueService.getQueue();
       const queueData = qRes.data.data;
 
       setQueue(queueData);
-      const currentId = queueData?.queueId ?? null; // Store in a local variable
+      const currentId = queueData?.queueId ?? null;
       setQueueId(currentId);
 
-      // Use currentId here, NOT the queueId state variable
       if (currentId) {
         const eRes = await queueService.getEntries(currentId);
         setEntries(eRes.data.data ?? []);
       } else {
         setEntries([]);
       }
-
       setFetchError(false);
     } catch (err) {
       console.error(err);
       setFetchError(true);
     } finally {
-      setLoading(false);
+      if (isInitial) setLoading(false);
     }
-  }, []); // No dependencies needed since we use local variables
+  }, []);
 
-  usePolling(refresh, POLL_INTERVAL_MS, true);
+  usePolling(() => refresh(false), POLL_INTERVAL_MS, true);
+
+  useEffect(() => {
+    refresh(true);
+  }, [refresh]);
 
   const callNext = async () => {
     setCalling(true);

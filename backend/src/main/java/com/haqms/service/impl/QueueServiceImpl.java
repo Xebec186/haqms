@@ -78,9 +78,9 @@ public class QueueServiceImpl implements QueueService {
                     "Patient has already checked in for appointment " + appointmentId);
         }
 
-        // 3. Get or create today's queue for this department
+        // 3. Get or create today's queue for this provider
         Queue queue = getOrCreateQueue(
-                appointment.getDepartment().getDepartmentId(),
+                appointment.getProvider().getProviderId(),
                 appointment.getAppointmentDate());
 
         if (queue.getStatus() == QueueStatus.CLOSED) {
@@ -333,12 +333,10 @@ public class QueueServiceImpl implements QueueService {
     @Override
     @Transactional(readOnly = true)
     public QueueResponse getTodaysQueueByProvider(Long providerId) {
-        Queue queue = queueRepository
+        return queueRepository
                 .findByProviderProviderIdAndQueueDate(providerId, LocalDate.now())
-                .orElseThrow(() -> new ResourceNotFoundException(
-                        "No queue exists for this provider today. " +
-                                "It will be created when the first patient checks in."));
-        return QueueResponse.from(queue);
+                .map(QueueResponse::from)
+                .orElse(null);
     }
 
     // ── Private helpers ───────────────────────────────────────────────────────

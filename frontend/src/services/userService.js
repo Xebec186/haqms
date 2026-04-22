@@ -12,6 +12,7 @@ const userService = {
   getPatient: (id) => api.get(`/patients/${id}`),
   updatePatient: (id, data) => api.patch(`/patients/${id}`, data),
   listPatients: (params) => api.get("/patients", { params }),
+  createPatient: (data) => api.post("/patients", data),
 
   // Admin — users
   listUsers: (params) => api.get("/admin/users", { params }),

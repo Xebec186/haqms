@@ -4,16 +4,20 @@ import com.haqms.dto.request.CreatePatientRequest;
 import com.haqms.dto.request.UpdatePatientRequest;
 import com.haqms.dto.response.PatientResponse;
 import com.haqms.entity.Patient;
+import com.haqms.entity.Role;
+import com.haqms.entity.SystemUser;
 import com.haqms.enums.Gender;
 import com.haqms.exception.ConflictException;
 import com.haqms.exception.ResourceNotFoundException;
 import com.haqms.repository.PatientRepository;
+import com.haqms.repository.RoleRepository;
 import com.haqms.repository.SystemUserRepository;
 import com.haqms.service.PatientService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,10 +28,12 @@ public class PatientServiceImpl implements PatientService {
 
     private final PatientRepository    patientRepository;
     private final SystemUserRepository userRepository;
+    private final RoleRepository       roleRepository;
+    private final PasswordEncoder      passwordEncoder;
 
     /**
-     * Staff-side patient registration (no system user account created).
-     * Self-registration with account creation goes through AuthService.register().
+     * Staff-side patient registration.
+     * Optionally creates a system user account if username and password are supplied.
      */
     @Override
     @Transactional
@@ -55,7 +61,30 @@ public class PatientServiceImpl implements PatientService {
                 .isActive(true)
                 .build();
 
-        return PatientResponse.from(patientRepository.save(patient));
+        patient = patientRepository.save(patient);
+
+        // Optionally create a system user account for this patient
+        if (request.getUsername() != null && request.getPassword() != null) {
+            if (userRepository.existsByUsername(request.getUsername())) {
+                throw new ConflictException(
+                        "Username '" + request.getUsername() + "' is already taken.");
+            }
+            Role patientRole = roleRepository.findByRoleName("PATIENT")
+                    .orElseThrow(() -> new ResourceNotFoundException("Role PATIENT not found"));
+
+            SystemUser user = SystemUser.builder()
+                    .role(patientRole)
+                    .username(request.getUsername())
+                    .passwordHash(passwordEncoder.encode(request.getPassword()))
+                    .email(request.getEmail())
+                    .patient(patient)
+                    .isActive(true)
+                    .build();
+            userRepository.save(user);
+            log.info("System user account created for patient {}", patient.getPatientId());
+        }
+
+        return PatientResponse.from(patient);
     }
 
     @Override

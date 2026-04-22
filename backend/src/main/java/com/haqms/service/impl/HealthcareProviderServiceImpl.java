@@ -59,6 +59,18 @@ public class HealthcareProviderServiceImpl implements HealthcareProviderService 
         return ProviderResponse.from(requireProvider(providerId));
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public ProviderResponse findByUserId(Long userId) {
+        HealthcareProvider provider = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found: " + userId))
+                .getProvider();
+        if (provider == null) {
+            throw new ResourceNotFoundException("No provider profile linked to user: " + userId);
+        }
+        return ProviderResponse.from(provider);
+    }
+
     /**
      * Creates a new healthcare provider.
      * If username and password are supplied in the request, also creates a linked

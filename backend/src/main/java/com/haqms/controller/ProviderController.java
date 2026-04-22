@@ -35,14 +35,15 @@ public class ProviderController {
     public ResponseEntity<ApiResponse<ProviderResponse>> getMyProfile(
             @AuthenticationPrincipal SystemUser currentUser) {
 
-        ProviderResponse response = providerService.findById(currentUser.getUserId());
+        ProviderResponse response = providerService.findByUserId(currentUser.getUserId());
         return ResponseEntity.ok(ApiResponse.success(response, "Profile retrieved"));
     }
 
     @GetMapping("/queue")
     @PreAuthorize(("hasRole('PROVIDER')"))
     public ResponseEntity<ApiResponse<QueueResponse>> getMyQueue(@AuthenticationPrincipal SystemUser currentUser) {
-        QueueResponse response = queueService.getTodaysQueueByProvider(currentUser.getProvider().getProviderId());
+        Long providerId = providerService.findByUserId(currentUser.getUserId()).getProviderId();
+        QueueResponse response = queueService.getTodaysQueueByProvider(providerId);
         return ResponseEntity.ok(ApiResponse.success(response, "Queue retrieved"));
     }
 
@@ -50,7 +51,8 @@ public class ProviderController {
     @PreAuthorize("hasRole('PROVIDER')")
     public ResponseEntity<ApiResponse<List<QueueEntryResponse>>> getMyQueueEntries(
             @AuthenticationPrincipal SystemUser currentUser) {
-        List<QueueEntryResponse> response = queueService.getEntriesByProvider(currentUser.getProvider().getProviderId());
+        Long providerId = providerService.findByUserId(currentUser.getUserId()).getProviderId();
+        List<QueueEntryResponse> response = queueService.getEntriesByProvider(providerId);
         return ResponseEntity.ok(ApiResponse.success(response, "Queue Entries retrieved"));
     }
 }

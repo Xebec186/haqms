@@ -52,7 +52,6 @@ export function AuthProvider({ children }) {
     isPatient: user?.role === "PATIENT",
     isProvider: user?.role === "PROVIDER",
     isAdmin: user?.role === "ADMIN",
-    isReceptionist: user?.role === "RECEPTIONIST",
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -52,7 +52,7 @@ export default function QueueEntryRow({
       )}
       <td className="px-4 py-3">
         <div className="flex gap-2 flex-wrap">
-          {/* CALLED → SERVING: provider only (onServing will be null for receptionist) */}
+          {/* CALLED → SERVING: provider only */}
           {entry.status === "CALLED" && onServing && (
             <Button
               size="sm"
@@ -73,7 +73,7 @@ export default function QueueEntryRow({
               Complete
             </Button>
           )}
-          {/* CALLED → MISSED: both provider and receptionist */}
+          {/* CALLED → MISSED: provider only */}
           {entry.status === "CALLED" && onMissed && (
             <Button
               size="sm"

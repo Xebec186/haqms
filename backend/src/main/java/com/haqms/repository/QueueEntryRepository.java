@@ -66,6 +66,7 @@ public interface QueueEntryRepository extends JpaRepository<QueueEntry, Long> {
     @Query("SELECT qe FROM QueueEntry qe " +
             "JOIN qe.appointment a " +
             "WHERE a.provider.providerId = :providerId " +
+            "  AND qe.queue.queueDate = CURRENT_DATE " +
             "ORDER BY " +
             "  CASE a.appointmentPriority " +
             "    WHEN 'EMERGENCY' THEN 1 " +

@@ -29,6 +29,7 @@ const UserManagement = lazy(() => import("../pages/admin/UserManagement"));
 const CreateUser = lazy(() => import("../pages/admin/CreateUser"));
 const ProviderList = lazy(() => import("../pages/admin/ProviderList"));
 const CreateProvider = lazy(() => import("../pages/admin/CreateProvider"));
+const CreatePatient = lazy(() => import("../pages/admin/CreatePatient"));
 const ManageSchedules = lazy(() => import("../pages/admin/ManageSchedules"));
 
 // ── Fallback ──────────────────────────────────────────────────────────────────
@@ -152,6 +153,14 @@ export default function AppRouter() {
             element={
               <P roles={["ADMIN"]}>
                 <CreateUser />
+              </P>
+            }
+          />
+          <Route
+            path="/admin/patients/new"
+            element={
+              <P roles={["ADMIN"]}>
+                <CreatePatient />
               </P>
             }
           />

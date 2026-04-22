@@ -235,7 +235,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     /**
-     * Updates appointment priority (ADMIN / RECEPTIONIST only — enforced at controller level).
+     * Updates appointment priority (ADMIN only — enforced at controller level).
      * Cannot change priority of COMPLETED or CANCELLED appointments.
      */
     @Override
@@ -282,7 +282,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     /**
      * If the caller holds the PATIENT role, verifies they own the appointment.
-     * All other roles (ADMIN, PROVIDER, RECEPTIONIST) pass through without restriction.
+     * All other roles (ADMIN, PROVIDER) pass through without restriction.
      */
     private void enforcePatientOwnership(Appointment appointment, SystemUser currentUser) {
         boolean isPatient = currentUser.getAuthorities().stream()

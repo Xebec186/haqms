@@ -158,7 +158,7 @@ public class AdminController {
     /**
      * POST /api/v1/admin/users
      * Creates a new system user with any role.
-     * Only ADMIN can create ADMIN or RECEPTIONIST accounts.
+     * Only ADMIN can create other ADMIN accounts.
      */
     @PostMapping("/users")
     public ResponseEntity<ApiResponse<SystemUserResponse>> createUser(

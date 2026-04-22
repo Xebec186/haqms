@@ -5,12 +5,14 @@ import com.haqms.dto.request.UpdateQueueStatusRequest;
 import com.haqms.dto.response.ApiResponse;
 import com.haqms.dto.response.QueueEntryResponse;
 import com.haqms.dto.response.QueueResponse;
+import com.haqms.entity.SystemUser;
 import com.haqms.service.QueueService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -125,11 +127,11 @@ public class QueueController {
 
     /**
      * PATCH /api/v1/queue/{queueId}/status
-     * Allows ADMIN to open, pause, or close a queue for a department.
+     * Allows PROVIDER or ADMIN to open, pause, or close a queue.
      * Closing a queue records closed_at. Pausing suspends callNext.
      */
     @PatchMapping("/{queueId}/status")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'PROVIDER')")
     public ResponseEntity<ApiResponse<QueueResponse>> updateQueueStatus(
             @PathVariable Long queueId,
             @Valid @RequestBody UpdateQueueStatusRequest request) {
@@ -140,16 +142,31 @@ public class QueueController {
 
     /**
      * GET /api/v1/queue/provider/{providerId}/today
-     * Returns today's queue for a provider, or 404 if none exists yet
-     * (no patients have checked in yet today).
+     * Returns today's queue for a provider, or 404 if none exists yet.
      */
     @GetMapping("/provider/{providerId}/today")
-    @PreAuthorize("hasRole('PROVIDER')")
+    @PreAuthorize("hasAnyRole('PROVIDER', 'ADMIN')")
     public ResponseEntity<ApiResponse<QueueResponse>> getTodaysQueue(
-            @PathVariable Long departmentId) {
+            @PathVariable Long providerId) {
 
-        QueueResponse response = queueService.getTodaysQueueByProvider(departmentId);
+        QueueResponse response = queueService.getTodaysQueueByProvider(providerId);
         return ResponseEntity.ok(ApiResponse.success(response, "Queue retrieved"));
+    }
+
+    /**
+     * GET /api/v1/queue/entries/appointment/{appointmentId}
+     * Retrieves the specific queue entry for a given appointment.
+     * Patients use this to monitor their wait time and position.
+     */
+    @GetMapping("/entries/appointment/{appointmentId}")
+    @PreAuthorize("hasAnyRole('PATIENT','PROVIDER','ADMIN')")
+    public ResponseEntity<ApiResponse<QueueEntryResponse>> getQueueEntryByAppointmentId(
+            @PathVariable Long appointmentId,
+            @AuthenticationPrincipal SystemUser currentUser) {
+
+        QueueEntryResponse response = queueService
+                .getQueueEntryByAppointmentId(appointmentId, currentUser);
+        return ResponseEntity.ok(ApiResponse.success(response, "Queue entry retrieved"));
     }
 }
 

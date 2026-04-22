@@ -22,7 +22,7 @@ public class CreateSystemUserRequest {
     private String email;
 
     @NotBlank(message = "Role is required")
-    private String roleName; // ADMIN, RECEPTIONIST, PROVIDER, PATIENT
+    private String roleName; // ADMIN, PROVIDER, PATIENT
 
     // Optional — link to an existing provider record if role = PROVIDER
     private Long providerId;

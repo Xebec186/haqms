@@ -44,7 +44,6 @@ public class DataSeeder implements ApplicationRunner {
         Role adminRole = roleRepo.save(new Role(null, "ADMIN", "Full access"));
         Role provider = roleRepo.save(new Role(null, "PROVIDER", "Clinical staff"));
         Role patient = roleRepo.save(new Role(null, "PATIENT", "Patient access"));
-        Role receptionist = roleRepo.save(new Role(null, "RECEPTIONIST", "Front desk"));
 
         // ── Default admin account ─────────────────────────────────────────────
         if (!userRepository.existsByUsername("admin")) {
@@ -104,17 +103,6 @@ public class DataSeeder implements ApplicationRunner {
                 CsvLogger.log("logs/providers.csv", "id, username, email, role", providerRows);
             }
         }
-
-        // seed receptionist
-        SystemUser recep = SystemUser.builder()
-                .role(receptionist)
-                .username("recep")
-                .passwordHash(passwordEncoder.encode("Password@123"))
-                .email("recep@gmail.com")
-                .isActive(true)
-                .build();
-        userRepository.save(recep);
-
 
         // Seed schedules: each provider gets Mon–Sat for 2 weeks
         LocalDate today = LocalDate.now();

@@ -2,7 +2,6 @@ export const ROLES = {
   PATIENT:      'PATIENT',
   PROVIDER:     'PROVIDER',
   ADMIN:        'ADMIN',
-  RECEPTIONIST: 'RECEPTIONIST',
 };
 
 export const APPOINTMENT_STATUS = {

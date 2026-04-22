@@ -36,4 +36,10 @@ public class CreatePatientRequest {
     private String ghanaCardNumber;
 
     private String address;
+
+    @Size(min = 3, max = 100, message = "Username must be between 3 and 100 characters")
+    private String username;
+
+    @Size(min = 8, message = "Password must be at least 8 characters")
+    private String password;
 }

@@ -6,10 +6,38 @@
   <component name="ChangeListManager">
     <list default="true" id="c7288db7-dd93-49a8-a4a7-17fb97723ab8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/haqms/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/haqms/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/haqms/controller/AppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/haqms/controller/AppointmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/haqms/controller/ProviderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/haqms/controller/ProviderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/haqms/controller/QueueController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/haqms/controller/QueueController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/haqms/dto/request/CreatePatientRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/haqms/dto/request/CreatePatientRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/haqms/dto/request/CreateSystemUserRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/haqms/dto/request/CreateSystemUserRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/haqms/entity/Queue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/haqms/entity/Queue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/haqms/repository/QueueEntryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/haqms/repository/QueueEntryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/haqms/runner/DataSeeder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/haqms/runner/DataSeeder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/haqms/service/HealthcareProviderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/haqms/service/HealthcareProviderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/haqms/service/impl/AppointmentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/haqms/service/impl/AppointmentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/haqms/service/impl/HealthcareProviderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/haqms/service/impl/HealthcareProviderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/haqms/service/impl/PatientServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/haqms/service/impl/PatientServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/haqms/service/impl/QueueServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/haqms/service/impl/QueueServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/haqms/controller/ProviderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/haqms/controller/ProviderController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/haqms/controller/QueueController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/haqms/controller/QueueController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/haqms/entity/Queue.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/haqms/entity/Queue.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/haqms/repository/QueueEntryRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/haqms/repository/QueueEntryRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/haqms/service/HealthcareProviderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/haqms/service/HealthcareProviderService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/haqms/service/impl/HealthcareProviderServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/haqms/service/impl/HealthcareProviderServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/haqms/service/impl/QueueServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/haqms/service/impl/QueueServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/features/QueueEntryRow.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/features/QueueEntryRow.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/ui/Badge.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/ui/Badge.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/context/AuthContext.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/context/AuthContext.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/pages/admin/AdminDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/admin/AdminDashboard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/admin/CreateUser.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/admin/CreateUser.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/pages/admin/UserManagement.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/admin/UserManagement.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/provider/QueueManagement.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/provider/QueueManagement.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/routes/AppRouter.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/routes/AppRouter.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/services/queueService.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/services/queueService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/services/userService.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/services/userService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/utils/constants.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

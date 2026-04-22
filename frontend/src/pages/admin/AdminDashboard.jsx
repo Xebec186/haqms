@@ -138,7 +138,7 @@ export default function AdminDashboard() {
               Providers
             </Button>
           </Link>
-          <Link to="/admin/users/new">
+          <Link to="/admin/patients/new">
             <Button variant="secondary" fullWidth iconComponent={LuPlus}>
               New Patient
             </Button>

@@ -24,7 +24,6 @@ const styles = {
   ADMIN: "bg-purple-50 text-purple-700 ring-1 ring-purple-200",
   PROVIDER: "bg-blue-50 text-blue-700 ring-1 ring-blue-200",
   PATIENT: "bg-teal-50 text-teal-700 ring-1 ring-teal-200",
-  RECEPTIONIST: "bg-indigo-50 text-indigo-700 ring-1 ring-indigo-200",
 };
 
 const icons = {
