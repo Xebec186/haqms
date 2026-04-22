@@ -56,7 +56,7 @@ export default function UserManagement() {
     }
   };
 
-  const roles = ["PATIENT", "PROVIDER", "ADMIN", "RECEPTIONIST"];
+  const roles = ["PATIENT", "PROVIDER", "ADMIN"];
 
   return (
     <PageWrapper
